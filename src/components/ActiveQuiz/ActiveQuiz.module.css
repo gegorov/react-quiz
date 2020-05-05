@@ -1,0 +1,8 @@
+.ActiveQuiz {
+  padding: 20px;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  margin: 0 10px;
+  box-sizing: border-box;
+}
