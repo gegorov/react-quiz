@@ -5,3 +5,8 @@
   margin-bottom: 5px;
   cursor: pointer;
 }
+
+.AnswerItem:hover {
+  background: rgba(255,255, 255, 0.2);
+  transition: background .3s ease-in-out;
+}
