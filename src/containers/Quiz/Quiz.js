@@ -58,12 +58,57 @@ class Quiz extends Component {
     ],
   };
 
+  onAnswerClickHandler = (answerId) => {
+    if (this.state.answerState) {
+      const key = Object.keys(this.state.answerState)[0]
+      if (this.state.answerState[key] === 'success') {
+        return;
+      }
+    }
+
+    console.log(answerId);
+
+    const question = this.state.quiz[this.state.activeQuestion]
+
+    if (question.correctAnswerId === answerId) {
+      this.setState({
+        answerState: { [answerId]: 'success' }
+      });
+
+      setTimeout(() => {
+        if (this.isQuizFinished()) {
+          console.log('FInished!')
+        } else {
+          this.setState({
+            activeQuestion: this.state.activeQuestion + 1,
+            answerState: null,
+          });
+        }
+      }, 1000);
+    } else {
+      this.setState({
+        answerState: { [answerId]: 'error' }
+      });
+    }
+  }
+
+  isQuizFinished() {
+    return this.state.activeQuestion + 1 === this.state.quiz.length
+  }
+
   render() {
     return (
       <div className={classes.Quiz}>
         <div className={classes.QuizWrapper}>
-          <h1>Quiz</h1>
-          <ActiveQuiz />
+          <h1>Please answer all question</h1>
+          <ActiveQuiz
+            answers={this.state.quiz[this.state.activeQuestion].answers}
+            question={this.state.quiz[this.state.activeQuestion].question}
+            onAnswerClick={this.onAnswerClickHandler}
+            quizLength={this.state.quiz.length}
+            answerNumber={this.state.activeQuestion + 1}
+            state={this.state.answerState}
+          />
         </div>
       </div>
     );
