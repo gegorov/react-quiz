@@ -1,0 +1,7 @@
+.AnswerItem {
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
