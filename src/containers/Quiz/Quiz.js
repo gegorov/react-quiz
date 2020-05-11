@@ -105,6 +105,10 @@ class Quiz extends Component {
     }
   }
 
+  componentDidMount() {
+    console.log('Quiz id: ', this.props.match.params.id)
+  }
+
   isQuizFinished() {
     return this.state.activeQuestion + 1 === this.state.quiz.length
   }

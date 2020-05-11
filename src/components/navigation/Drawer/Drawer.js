@@ -1,20 +1,43 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import BackDrop from '../../UI/BackDrop/BackDrop';
 
 import classes from './Drawer.module.css';
 
 const links = [
-  1, 2, 3,
+  {
+    to: '/',
+    label: 'List of Quizzes',
+    exact: true,
+  },
+  {
+    to: '/auth',
+    label: 'Authorization',
+    exact: false,
+  },
+  {
+    to: '/quiz-creator',
+    label: 'Create Quiz',
+    exact: false,
+  },
 ];
 
 class Drawer extends Component {
+
   
   renderLinks() {
     return links.map((link, index) => {
       return (
         <li key={index}>
-          Link {link}
+          <NavLink
+            to={link.to}
+            exact={link.exact}
+            activeClassName={classes.active}
+            onClick={this.props.onClose}
+          >
+            {link.label}
+          </NavLink>
         </li>
       )
     })
@@ -31,9 +54,7 @@ class Drawer extends Component {
       <React.Fragment>
         <nav className={cls.join(' ')}>
           <ul>
-            <a>
               {this.renderLinks()}
-            </a>
           </ul>
         </nav>
         {this.props.isOpen ? <BackDrop onClick={this.props.onClose} /> : null }
