@@ -5,7 +5,8 @@ import classes from './Button.module.css';
 const Button = props => {
   const cls = [
     classes.Button,
-    classes[props.type]
+    classes[props.type],
+    props.disabled ? classes.disabled : '',
   ]
   return (
     <button
