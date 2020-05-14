@@ -14,7 +14,6 @@ class Layout extends Component {
     this.setState({
       menu: !this.state.menu,
     });
-
   }
 
   menuCloseHandler = () => {
@@ -38,7 +37,7 @@ class Layout extends Component {
           { this.props.children }
         </main>
       </div>
-    )
+    );
   }
 }
 
