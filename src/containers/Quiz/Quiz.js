@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from '../../axios/axios-config';
 
 import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz';
 import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';

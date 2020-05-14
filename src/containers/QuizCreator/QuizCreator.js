@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
+import axios from '../../axios/axios-config';
 
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Button from '../../components/UI/Button/Button';
@@ -103,7 +103,7 @@ class QuizCreator extends Component {
     const { quiz } = this.state;
 
     try {
-      await axios.post('https://quiz-a3324.firebaseio.com/quizzes.json', quiz);
+      await axios.post('/quizzes.json', quiz);
 
       this.setState({
         ...defaultState,
