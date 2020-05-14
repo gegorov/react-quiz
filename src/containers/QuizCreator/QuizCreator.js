@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Button from '../../components/UI/Button/Button';
@@ -97,8 +98,19 @@ class QuizCreator extends Component {
     event.preventDefault();
   }
 
-  creatQuizHandler = (event) => {
+  creatQuizHandler = async (event) => {
     event.preventDefault();
+    const { quiz } = this.state;
+
+    try {
+      await axios.post('https://quiz-a3324.firebaseio.com/quizzes.json', quiz);
+
+      this.setState({
+        ...defaultState,
+      });
+    } catch (error) {
+      console.log(error);
+    }
     // console.log(this.state.quiz);
   }
 
