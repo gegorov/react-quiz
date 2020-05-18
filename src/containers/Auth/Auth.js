@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import is from 'is_js';
-import axios from 'axios';
+import { connect } from 'react-redux';
+
+import * as actions from '../../store/actions/auth';
 
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 
 import classes from './Auth.module.css';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+
 class Auth extends Component {
   constructor(props) {
     super(props);
@@ -95,7 +97,7 @@ class Auth extends Component {
   }
 
 
-  loginHandler = async () => {
+  loginHandler = () => {
     const {
       formControls: {
         email: { value: email },
@@ -103,21 +105,12 @@ class Auth extends Component {
       },
     } = this.state;
 
-    console.log(email, password);
-    const authData = {
-      email,
-      password,
-      returnSecureToken: true,
-    };
-    try {
-      const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, authData);
-      console.log(response.data);
-    } catch (e) {
-      console.log(e);
-    }
+    const { auth } = this.props;
+
+    auth(email, password, true);
   }
 
-  registerHandler = async () => {
+  registerHandler = () => {
     const {
       formControls: {
         email: { value: email },
@@ -125,18 +118,9 @@ class Auth extends Component {
       },
     } = this.state;
 
-    console.log(email, password);
-    const authData = {
-      email,
-      password,
-      returnSecureToken: true,
-    };
-    try {
-      const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, authData);
-      console.log(response.data);
-    } catch (e) {
-      console.log(e);
-    }
+    const { auth } = this.props;
+
+    auth(email, password, false);
   }
 
   renderInputs() {
@@ -190,4 +174,10 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+function mapDispatchToProps(dispatch) {
+  return {
+    auth: (email, password, isLogin) => dispatch(actions.auth(email, password, isLogin)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
