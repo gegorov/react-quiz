@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import quizReducer from './quiz';
+import authReducer from './auth';
 import newQuizReducer from './newQuiz';
+import quizReducer from './quiz';
 
 
 export default combineReducers({
-  quiz: quizReducer,
+  auth: authReducer,
   newQuiz: newQuizReducer,
+  quiz: quizReducer,
 });
