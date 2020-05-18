@@ -26,7 +26,6 @@ class Drawer extends Component {
 
   render() {
     const { isAuthorized, isOpen, onClose } = this.props;
-    console.log('drawer', isAuthorized);
     const cls = [classes.Drawer];
 
     if (!isOpen) {

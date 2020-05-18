@@ -29,11 +29,5 @@ export function validateForm(formControls) {
     isFormValid = formControls[name].valid && isFormValid;
   });
 
-  // for ( let control in formControls) {
-  //   if (formControls.hasOwnProperty(control)) {
-  //     isFormValid = formControls[control].valid && isFormValid;
-  //   }
-  // }
-
   return isFormValid;
 }

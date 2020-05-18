@@ -14,9 +14,9 @@ const initialState = {
   loading: false,
   error: null,
   activeQuestion: 0,
-  answerState: null, // { [id]: 'success' | 'error'}
+  answerState: null,
   isFinished: false,
-  results: {}, // { [id]: 'success' | 'error'}
+  results: {},
   quiz: null,
 };
 

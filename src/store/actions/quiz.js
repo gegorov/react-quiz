@@ -113,10 +113,8 @@ export function quizAnswerClick(answerId) {
         results[question.id] = 'success';
       }
       dispatch(quizSetState({ [answerId]: 'success' }, results));
-      console.log('before tada');
       setTimeout(() => {
         if (quizIsFinished(state.quiz)) {
-          console.log('tada');
           dispatch(quizFinished());
         } else {
           dispatch(quizNextQuestion());
