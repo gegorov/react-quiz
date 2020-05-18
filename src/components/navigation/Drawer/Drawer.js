@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
 import BackDrop from '../../UI/BackDrop/BackDrop';
 
 import classes from './Drawer.module.css';
 
+const propTypes = {
+  onClose: PropTypes.func.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+};
 class Drawer extends Component {
   renderLinks(links) {
     const { onClose } = this.props;
@@ -72,5 +78,7 @@ class Drawer extends Component {
     );
   }
 }
+
+Drawer.propTypes = propTypes;
 
 export default Drawer;

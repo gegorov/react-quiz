@@ -3,6 +3,7 @@ import {
   Redirect, Route, Switch, withRouter,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as actions from './store/actions/auth';
 
@@ -12,6 +13,11 @@ import Quiz from './containers/Quiz/Quiz';
 import QuizCreator from './containers/QuizCreator/QuizCreator';
 import QuizList from './containers/QuizList/QuizList';
 import Logout from './components/Logout/Logout';
+
+const propTypes = {
+  authLogin: PropTypes.func.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
+};
 
 class App extends Component {
   componentDidMount() {
@@ -51,6 +57,8 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {

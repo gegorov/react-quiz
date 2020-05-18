@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import is from 'is_js';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions/auth';
 
@@ -9,6 +10,9 @@ import Input from '../../components/UI/Input/Input';
 
 import classes from './Auth.module.css';
 
+const propTypes = {
+  auth: PropTypes.func.isRequired,
+};
 
 class Auth extends Component {
   constructor(props) {
@@ -173,6 +177,8 @@ class Auth extends Component {
     );
   }
 }
+
+Auth.propTypes = propTypes;
 
 function mapDispatchToProps(dispatch) {
   return {
